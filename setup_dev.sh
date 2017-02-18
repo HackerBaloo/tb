@@ -1,6 +1,11 @@
 #!/bin/bash
+folder=dev_vm/
 
-sudo apt install -y postgresql-client-common
-sudo apt install -y postgresql-client
+cp bootstrap.sh $folder
+cp developer.sh $folder
+cp always.sh $folder
+pushd $folder
+vagrant up
+popd
 
-# sudo npm install -g nodemon
+

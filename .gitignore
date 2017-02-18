@@ -1,1 +1,8 @@
+.*
+!/.gitignore
+dev_vm/always.sh
+dev_vm/bootstrap.sh
+dev_vm/developer.sh
 node_modules
+vm/always.sh
+vm/bootstrap.sh
