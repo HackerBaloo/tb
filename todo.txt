@@ -1,0 +1,20 @@
+https://hub.docker.com/_/postgres/
+
+http://mherman.org/blog/2015/02/12/postgresql-and-nodejs/#.WKMDpfnhBhE
+https://facebook.github.io/react-native/docs/network.html
+https://facebook.github.io/react/tutorial/tutorial.html
+https://facebook.github.io/react/tutorial/tutorial.html
+
+https://code.visualstudio.com/docs/editor/node-debugging
+http://stackoverflow.com/questions/300855/javascript-unit-test-tools-for-tdd
+https://rominirani.com/docker-tutorial-series-part-8-linking-containers-69a4e5bf50fb#.mvy8ryw3k
+
+https://github.com/kriasoft/react-starter-kit
+
+# to find docker ip from host
+sudo docker network inspect bridge
+
+psql -h 172.17.0.2 -U postgres
+
+psql -h 172.17.0.2 -U postgres -c "select count(*) from users;"
+psql -h 172.17.0.2 -U postgres -c "insert into users (name, address, email, birthday) VALUES ('adam', 'vägen', 'not@gmail.com', '1969-03-05');"

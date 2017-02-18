@@ -1,0 +1,8 @@
+{
+  "name": "tb",
+  "version": "0.1",
+  "dependencies": {
+    "pg": "^6.1.0",
+    "pg-async": "^2.4.3"
+  }
+}
