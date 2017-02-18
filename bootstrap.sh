@@ -47,5 +47,19 @@ sudo docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d po
 #create table
 node db/models/database.js
 
+
+#yarn
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update && sudo apt -y install yarn
+
+#client
+git clone -o react-starter-kit -b master --single-branch \
+      https://github.com/kriasoft/react-starter-kit.git client
+pushd client
+yarn install
+yarn start&
+popd
+
 # start app container
 # docker run --name some-app --link some-postgres:postgres -d application-that-uses-postgres

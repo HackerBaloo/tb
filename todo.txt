@@ -16,5 +16,10 @@ sudo docker network inspect bridge
 
 psql -h 172.17.0.2 -U postgres
 
-psql -h 172.17.0.2 -U postgres -c "select count(*) from users;"
+psql -h 172.17.0.2 -U postgres -c "select * from users;"
 psql -h 172.17.0.2 -U postgres -c "insert into users (name, address, email, birthday) VALUES ('adam', 'vägen', 'not@gmail.com', '1969-03-05');"
+
+mysecretpassword
+"name=Nisse Hult&address=Småstigen 5 Hyltebruk&email=nisse.hult@hotmail.com&birthday=1999-09-09"
+curl --data "name=Nisse&address=stigen&email=nisse.hult@hotmail.com&birthday=1999-09-09" http://127.0.0.1:3030/api/v1/users
+curl --data "name=Nisse Hult&address=Småstigen 5 Hyltebruk&email=nisse2.hult@hotmail.com&birthday=1999-09-09" http://127.0.0.1:3030/api/v1/users

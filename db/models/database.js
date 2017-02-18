@@ -57,7 +57,7 @@ function insertUsers(client){
 			throw error;
 		});
 		query.on('end', (result) => {
-			console.log(result);
+			// console.log(result);
 			loop.next();
 		});
 	}, () => { closeConnection(client) });
