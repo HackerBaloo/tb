@@ -23,3 +23,9 @@ mysecretpassword
 "name=Nisse Hult&address=Småstigen 5 Hyltebruk&email=nisse.hult@hotmail.com&birthday=1999-09-09"
 curl --data "name=Nisse&address=stigen&email=nisse.hult@hotmail.com&birthday=1999-09-09" http://127.0.0.1:3030/api/v1/users
 curl --data "name=Nisse Hult&address=Småstigen 5 Hyltebruk&email=nisse2.hult@hotmail.com&birthday=1999-09-09" http://127.0.0.1:3030/api/v1/users
+curl --data-urlencode "name=Lotta Hult&address=Småstigen 5 277 66 Hyltebruk&email=lotta2.hult@hotmail.com&birthday=2001-09-09" http://127.0.0.1:3030/api/v1/users
+
+
+update
+curl -X PUT --data "name=Bjorn&address=stigen&email=ettan@live.com&birthday=1969-03-05" http://127.0.0.1:3030/api/v1/users/1
+UPDATE users SET name="Bjorn", address="Stigen", email($3), birthday($4) WHERE id=($5)
