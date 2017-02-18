@@ -4,9 +4,16 @@
     <title>Users App - with Node + Express + Angular + PostgreSQL</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="/stylesheets/style.css" media="screen">
   </head>
   <body ng-controller="mainController">
     <div class="container">
+      <div class="header">
+        <h1>User App</h1>
+        <hr>
+        <h1 class="lead">Node + Express + Angular + PostgreSQL</h1>
+      </div>
+      <div class="user-form">
         <form>
             <div class="form-group">
             <input type="text" class="form-control input-lg" placeholder="Name..." ng-model="formData.name">
@@ -16,9 +23,13 @@
             </div>
             <button type="submit" class="btn btn-primary btn-lg" ng-click="createUser()">Add User</button>
         </form>
+      </div>
+      <br>
+      <div class="user-list">
         <ul ng-repeat="user in usersData">
-        <li><input type="checkbox" ng-click="deleteUser(user.id)">&nbsp;{{ user.name }}&#59;&nbsp;{{ user.email }}</li>
-      </ul>
+          <li><h3><button type="submit" class="btn btn-primary btn-lg" ng-click="deleteUser(user.id)">Delete User</button>&nbsp;{{ user.name }}&#59;&nbsp;{{ user.email }}&#59;&nbsp;{{ user.birthday }}&#59;&nbsp;{{ user.address }}</h3></li><hr>
+        </ul>
+      </div>
     </div>
     <script src="//code.jquery.com/jquery-2.2.4.min.js" type="text/javascript"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>

@@ -40,8 +40,12 @@ router.post(route, (req, res, next) => {
       return res.status(500).json({success: false, user: err});
     }
     // SQL Query > Insert User
-    client.query('insert into users (name, address, email, birthday) VALUES ($1,$2,$3,$4)',
+    const action = client.query('insert into users (name, address, email, birthday) VALUES ($1,$2,$3,$4)',
     user_to_values(user));
+    action.on('error', (error) => {
+      console.log('insert error:' + error);
+      return res.status(500).json({success: false, user: error});
+    });
     // SQL Query > Select User
     const query = client.query('SELECT * FROM users ORDER BY id ASC');
     // Stream results back one row at a time

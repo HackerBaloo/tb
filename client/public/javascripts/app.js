@@ -18,7 +18,7 @@ angular.module('nodeUsers', [])
             $http.post(route, $scope.formData)
                 .success((data) => {
                     $scope.formData = {};
-                    $scope.userData = data;
+                    $scope.usersData = data;
                     console.log(data);
                 })
                 .error((error) => {
@@ -29,7 +29,7 @@ angular.module('nodeUsers', [])
         $scope.deleteUser = (userID) => {
             $http.delete(route + '/' + userID)
                 .success((data) => {
-                    $scope.userData = data;
+                    $scope.usersData = data;
                     console.log(data);
                 })
                 .error((data) => {
