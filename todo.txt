@@ -31,4 +31,4 @@ curl -X PUT --data "name=Bjorn&address=stigen&email=ettan@live.com&birthday=1969
 UPDATE users SET name="Bjorn", address="Stigen", email($3), birthday($4) WHERE id=($5)
 
 delete
-curl -X DELETE http://127.0.0.1:3030/api/v1/todos/17
+curl -X DELETE http://127.0.0.1:3030/api/v1/users/17

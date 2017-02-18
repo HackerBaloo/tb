@@ -21,8 +21,8 @@ function user_to_values(user) {
 }
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', (req, res, next) => {
+  res.sendFile('index.html');
 });
 
 module.exports = router;
