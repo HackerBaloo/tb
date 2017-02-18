@@ -96,8 +96,8 @@ router.put(route + '/:user_id', (req, res, next) => {
     // SQL Query > Update Data
     values = user_to_values(user);
     values.push(id);
-    const update = client.query('UPDATE users SET name=($1), address=($2), email=($3), birthday=($4) WHERE id=($5)', values);
-    update.on('error', (error) => {
+    const action = client.query('UPDATE users SET name=($1), address=($2), email=($3), birthday=($4) WHERE id=($5)', values);
+    action.on('error', (error) => {
       console.log('update error:' + error);
       return res.status(500).json({success: false, user: error});
     });
@@ -113,6 +113,38 @@ router.put(route + '/:user_id', (req, res, next) => {
     });
     // After all data is returned, close connection and return results
     query.on('end', function() {
+      done();
+      return res.json(results);
+    });
+  });
+});
+
+router.delete(route + '/:user_id', (req, res, next) => {
+  const results = [];
+  // Grab data from the URL parameters
+  const id = req.params.user_id;
+  // Get a Postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done) => {
+    // Handle connection errors
+    if(err) {
+      done();
+      console.log(err);
+      return res.status(500).json({success: false, data: err});
+    }
+    // SQL Query > Delete Data
+    const action = client.query('DELETE FROM users WHERE id=($1)', [id]);
+    action.on('error', (error) => {
+      console.log('delete error:' + error);
+      return res.status(500).json({success: false, user: error});
+    });
+    // SQL Query > Select Data
+    var query = client.query('SELECT * FROM users ORDER BY id ASC');
+    // Stream results back one row at a time
+    query.on('row', (row) => {
+      results.push(row);
+    });
+    // After all data is returned, close connection and return results
+    query.on('end', () => {
       done();
       return res.json(results);
     });
