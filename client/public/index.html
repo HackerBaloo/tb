@@ -16,19 +16,21 @@
       <div class="user-form">
         <form>
             <div class="form-group">
-            <input type="text" class="form-control input-lg" placeholder="Name..." ng-model="formData.name">
-            <input type="text" class="form-control input-lg" placeholder="Address..." ng-model="formData.address">
-            <input type="text" class="form-control input-lg" placeholder="Email..." ng-model="formData.email">
-            <input type="text" class="form-control input-lg" placeholder="Birthday..." ng-model="formData.birthday">
+            <input type="text" class="form-control input" placeholder="Name..." ng-model="formData.name">
+            <input type="text" class="form-control input" placeholder="Address..." ng-model="formData.address">
+            <input type="text" class="form-control input" placeholder="Email..." ng-model="formData.email">
+            <input type="text" class="form-control input" placeholder="Birthday..." ng-model="formData.birthday">
             </div>
-            <button type="submit" class="btn btn-primary btn-lg" ng-click="createUser()">Add User</button>
+            <button ng-disabled="formData.DisableCreate" type="submit" class="btn btn-primary btn" ng-click="createUser()">Add User</button>
+            <button ng-disabled="formData.DisableUpdate" type="submit" class="btn btn-primary btn" ng-click="updateUser(formData.id)">Update User</button>
         </form>
       </div>
       <br>
       <div class="user-list">
         <ul ng-repeat="user in usersData">
-          <li><h3><button type="submit" class="btn btn-primary btn-lg" ng-click="deleteUser(user.id)">Delete User</button>&nbsp;{{ user.name }}&#59;&nbsp;{{ user.email }}&#59;&nbsp;{{ user.birthday }}&#59;&nbsp;{{ user.address }}</h3></li><hr>
+          <li ng-click="selectUser(user.id)"><button type="submit" class="btn btn btn" ng-click="deleteUser(user.id)">Delete User</button>&nbsp;{{ user.name }}&#59;&nbsp;{{ user.email }}&#59;&nbsp;{{ user.birthday }}&#59;&nbsp;{{ user.address }}</li><hr>
         </ul>
+        <button type="submit" class="btn" ng-click="unselectUser()">UnSelect User</button>
       </div>
     </div>
     <script src="//code.jquery.com/jquery-2.2.4.min.js" type="text/javascript"></script>
