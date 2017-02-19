@@ -23,12 +23,13 @@
             </div>
             <button ng-disabled="formData.DisableCreate" type="submit" class="btn btn-primary btn" ng-click="createUser()">Add User</button>
             <button ng-disabled="formData.DisableUpdate" type="submit" class="btn btn-primary btn" ng-click="updateUser(formData.id)">Update User</button>
+            <input class="lead" type="checkbox" ng-click="filterAge(30)">Filter old enough</input>
         </form>
       </div>
       <br>
       <div class="user-list">
         <ul ng-repeat="user in usersData">
-          <li ng-click="selectUser(user.id)"><button type="submit" class="btn btn btn" ng-click="deleteUser(user.id)">Delete User</button>&nbsp;{{ user.name }}&#59;&nbsp;{{ user.email }}&#59;&nbsp;{{ user.birthday }}&#59;&nbsp;{{ user.address }}</li><hr>
+          <li ng-click="selectUser(user.id)"><button type="submit" class="btn btn btn" ng-click="deleteUser(user.id)">Delete User</button>&nbsp;{{ user.name }}&#59;&nbsp;{{ user.email }}&#59;&nbsp;{{ user.age.years }}&#59;&nbsp;{{ user.address }}</li><hr>
         </ul>
         <button type="submit" class="btn" ng-click="unselectUser()">UnSelect User</button>
       </div>

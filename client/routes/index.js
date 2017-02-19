@@ -20,6 +20,11 @@ function user_to_values(user) {
   return [user.name, user.address, user.email, user.birthday]
 }
 
+function query_users(client){
+    cmd = "SELECT id, name, email, age(birthday) as age, to_char(birthday, 'YYYY-MM-DD') as birthday, address FROM users ORDER BY id ASC";
+    return client.query(cmd);
+}
+
 /* GET home page. */
 router.get('/', (req, res, next) => {
   res.sendFile('index.html');
@@ -47,7 +52,7 @@ router.post(route, (req, res, next) => {
       return res.status(500).json({success: false, user: error});
     });
     // SQL Query > Select User
-    const query = client.query('SELECT * FROM users ORDER BY id ASC');
+    const query = query_users(client);
     // Stream results back one row at a time
     query.on('row', (row) => {
       results.push(row);
@@ -71,7 +76,7 @@ router.get(route, (req, res, next) => {
       return res.status(500).json({success: false, data: err});
     }
     // SQL Query > Select Data
-    const query = client.query('SELECT * FROM users ORDER BY id ASC;');
+    const query = query_users(client);
     // Stream results back one row at a time
     query.on('row', (row) => {
       results.push(row);
@@ -106,7 +111,7 @@ router.put(route + '/:user_id', (req, res, next) => {
       return res.status(500).json({success: false, user: error});
     });
     // SQL Query > Select Data
-    const query = client.query("SELECT * FROM users ORDER BY id ASC");
+    const query = query_users(client);
     // Stream results back one row at a time
     query.on('row', (row) => {
       results.push(row);
@@ -142,7 +147,7 @@ router.delete(route + '/:user_id', (req, res, next) => {
       return res.status(500).json({success: false, user: error});
     });
     // SQL Query > Select Data
-    var query = client.query('SELECT * FROM users ORDER BY id ASC');
+    const query = query_users(client);
     // Stream results back one row at a time
     query.on('row', (row) => {
       results.push(row);

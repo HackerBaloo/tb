@@ -1,20 +1,25 @@
 const route = '/api/v1/users';
 
+function getUsers($scope, $http){
+    $http.get(route)
+        .success((users) => {
+            $scope.usersData = users;
+            $scope.formData.DisableUpdate = true;
+            $scope.formData.DisableCreate = false;
+            console.log(users);
+        })
+        .error((error) => {
+            console.log('Error: ' + error);
+        });
+}
+
 angular.module('nodeUsers', [])
     .controller('mainController', ($scope, $http) => {
         $scope.formData = {};
         $scope.usersData = {};
+        $scope.filtered = false
         // Get all users
-        $http.get(route)
-            .success((users) => {
-                $scope.usersData = users;
-                $scope.formData.DisableUpdate = true;
-                $scope.formData.DisableCreate = false;
-                console.log(users);
-            })
-            .error((error) => {
-                console.log('Error: ' + error);
-            });
+        getUsers($scope, $http);
         // Create a new user
         $scope.createUser = () => {
             $http.post(route, $scope.formData)
@@ -68,6 +73,7 @@ angular.module('nodeUsers', [])
                     console.log('Selected formData:' + $scope.formData.id)
                     $scope.formData.DisableUpdate = false;
                     $scope.formData.DisableCreate = true;
+                    return;
                 }
             }
         };
@@ -77,6 +83,26 @@ angular.module('nodeUsers', [])
             $scope.formData = {};
             $scope.formData.DisableUpdate = true;
             $scope.formData.DisableCreate = false;
+        };
+        // Filter on age
+        $scope.filterAge = (age) => {
+            filtered = $scope.filtered;
+            $scope.filtered = !$scope.filtered;
+            if (filtered){
+                console.log('clear filter: ' + filtered)
+                getUsers($scope, $http);
+                return;
+            }
+            allUsers = $scope.usersData;
+            users = [];
+            for(i=0; i < allUsers.length; i++){
+                user = allUsers[i];
+                console.log('Filter name :' + user.name + '; age: ' + user.age.years);
+                if(user.age >= age.years){
+                    users.push(user);
+                }
+            }
+            $scope.usersData = users;
         };
     });
 
