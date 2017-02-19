@@ -1,3 +1,4 @@
 #!/bin/bash
 
-sudo docker run start some-postgres
+sudo docker start postgres
+sudo docker start www

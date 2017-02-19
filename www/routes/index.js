@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const pg = require('pg');
 const path = require('path');
-const connectionString = process.env.DATABASE_URL || 'postgres://postgres:mysecretpassword@172.17.0.2:5432/postgres';
+const connectionString = process.env.DATABASE_URL || 'postgres://postgres:mysecretpassword@postgres:5432/postgres';
 
 const route = '/api/v1/users';
 
