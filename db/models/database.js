@@ -1,5 +1,6 @@
 const pg = require('pg');
-const connectionString = process.env.DATABASE_URL || 'postgres://postgres:mysecretpassword@172.17.0.2:5432/postgres';
+//const connectionString = process.env.DATABASE_URL || 'postgres://postgres:mysecretpassword@172.17.0.2:5432/postgres';
+const connectionString = process.env.DATABASE_URL || 'postgres://postgres:mysecretpassword@localhost:5432/postgres';
 
 const testUsers = [
 	{name: "Björn Carlsson", address: "Törnskatevägen 2\n23170 Anderslöv", email: "not.bjorn.carlsson@gmail.com", birthday: "1969-03-05"},

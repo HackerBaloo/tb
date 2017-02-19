@@ -5,4 +5,14 @@ dev_vm/bootstrap.sh
 dev_vm/developer.sh
 node_modules
 vm/always.sh
-vm/bootstrap.sh
+vm/www/
+vm/package.json
+vm/Dockerfile
+vm/ubuntu-xenial-16.04-cloudimg-console.log
+vm/bootstrap_production.sh
+aws/always.sh
+aws/www/
+aws/package.json
+aws/Dockerfile
+aws/ubuntu-xenial-16.04-cloudimg-console.log
+aws/bootstrap_production.sh
