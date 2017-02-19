@@ -11,7 +11,7 @@ sudo apt install -y postgresql-client-common
 sudo apt install -y postgresql-client
 
 #start postgres
-sudo docker run -p 5432:5432 --name postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+docker run -p 5432:5432 --name postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
 
 # create users table
 psql -h 172.17.0.2 -U postgres -c "CREATE TABLE users(id SERIAL PRIMARY KEY, name text, address text, email text UNIQUE not null, birthday date not null);"

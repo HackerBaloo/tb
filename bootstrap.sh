@@ -13,10 +13,7 @@ sudo apt install -y --no-install-recommends \
 curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add -    
 
 # set up the stable repository
-sudo add-apt-repository \
-       "deb https://apt.dockerproject.org/repo/ \
-       ubuntu-$(lsb_release -cs) \
-       main"
+sudo add-apt-repository "deb https://apt.dockerproject.org/repo/ ubuntu-$(lsb_release -cs) main"
 #sudo sh -c 'echo deb https://apt.dockerproject.org/repo ubuntu-trusty main > /etc/apt/sources.list.d/docker.list'
 
 sudo apt update
