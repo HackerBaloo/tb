@@ -3,6 +3,14 @@
 	"configurations": [
 		{
 			"type": "node",
+			"request": "launch",
+			"name": "Launch Protractortest",
+			"program": "/usr/bin/protractor",
+			"args": ["${workspaceRoot}/client/test/conf.js"],
+			"cwd": "${workspaceRoot}/client/test"
+		},
+		{
+			"type": "node",
 			"request": "attach",
 			"name": "Attach to Process",
 			"processId": "${command.PickProcess}",

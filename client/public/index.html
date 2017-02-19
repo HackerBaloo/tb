@@ -21,17 +21,23 @@
             <input type="text" class="form-control input" placeholder="Email..." ng-model="formData.email">
             <input type="text" class="form-control input" placeholder="Birthday..." ng-model="formData.birthday">
             </div>
-            <button ng-disabled="formData.DisableCreate" type="submit" class="btn btn-primary btn" ng-click="createUser()">Add User</button>
-            <button ng-disabled="formData.DisableUpdate" type="submit" class="btn btn-primary btn" ng-click="updateUser(formData.id)">Update User</button>
+            <button ng-disabled="formData.DisableCreate" type="submit" class="btn btn-primary btn" ng-click="createUser()" id="add" value="Add">Add</button>
+            <button ng-disabled="formData.DisableUpdate" type="submit" class="btn" ng-click="updateUser(formData.id)" id="update">Update</button>
             <input class="lead" type="checkbox" ng-click="filterAge(30)">Filter old enough</input>
         </form>
       </div>
       <br>
       <div class="user-list">
         <ul ng-repeat="user in usersData">
-          <li ng-click="selectUser(user.id)"><button type="submit" class="btn btn btn" ng-click="deleteUser(user.id)">Delete User</button>&nbsp;{{ user.name }}&#59;&nbsp;{{ user.email }}&#59;&nbsp;{{ user.age.years }}&#59;&nbsp;{{ user.address }}</li><hr>
+          <li ng-click="selectUser(user.id)" >
+            <label>Name:</label>&nbsp;{{ user.name }}<br>
+            <div item-width="100"><label>Address:</label>&nbsp;{{ user.address }}&nbsp;<br>
+            <label>Email:</label>&nbsp;{{ user.email }}<br>
+            <label>Age:</label>&nbsp;{{ user.age.years }}<br>
+            <button type="submit" class="btn btn btn" ng-click="deleteUser(user.id)" id="{{user.email }}" >Delete</button>
+            </li><hr>
         </ul>
-        <button type="submit" class="btn" ng-click="unselectUser()">UnSelect User</button>
+        <button type="submit" class="btn" ng-click="unselectUser()" id="clear">Clear selection</button>
       </div>
     </div>
     <script src="//code.jquery.com/jquery-2.2.4.min.js" type="text/javascript"></script>

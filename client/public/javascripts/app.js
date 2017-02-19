@@ -98,7 +98,7 @@ angular.module('nodeUsers', [])
             for(i=0; i < allUsers.length; i++){
                 user = allUsers[i];
                 console.log('Filter name :' + user.name + '; age: ' + user.age.years);
-                if(user.age >= age.years){
+                if(user.age.years >= age){
                     users.push(user);
                 }
             }
