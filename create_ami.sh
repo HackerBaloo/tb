@@ -1,5 +1,5 @@
 #!/bin/bash
-folder=aws/
+folder=~/aws/
 
 cp bootstrap_production.sh $folder
 cp Dockerfile $folder
