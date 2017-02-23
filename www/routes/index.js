@@ -1,18 +1,16 @@
 var utils = require("./utils")
-var get = require("./get")
-var put = require("./put")
-var post = require("./post")
-var del = require("./delete")
+var crud = require("./crud")
 var router = utils.get_router();
-
-/* GET home page. */
-router.get('/', (req, res, next) => {
-  res.sendFile('index.html');
-});
 
 module.exports = router;
 
-get.route();
-put.route();
-post.route();
-del.route();
+utils.register('get',    '/', (req, res, next) => {
+  res.sendFile('index.html');
+});
+
+const api_url = '/api/v1/users';
+
+utils.register('get',    api_url,               crud.handle_read);
+utils.register('put',    api_url + '/:user_id', crud.handle_update);
+utils.register('post',   api_url,               crud.handle_insert);
+utils.register('delete', api_url + '/:user_id', crud.handle_delete);
