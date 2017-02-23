@@ -1,4 +1,4 @@
-var express = require('express');
+const express = require('express');
 const router = express.Router();
 const pg = require('pg');
 const connectionString = process.env.DATABASE_URL || 'postgres://postgres:mysecretpassword@postgres:5432/postgres';
@@ -32,21 +32,7 @@ function query_users(client, res, done) {
 module.exports = {
 
   register: function (operation, url, handler) {
-    switch (operation){
-      case 'get':
-        router.get(url, handler);
-        break;
-      case 'put':
-        router.put(url, handler);
-        break;
-      case 'post':
-        router.post(url, handler);
-        break;
-      case 'delete':
-        router.delete(url, handler);
-        break;
-    }
-    
+    operation.call(router, url, handler);
   },
 
   query: function (res, sql, values) {
