@@ -67,19 +67,5 @@ module.exports = {
 
   get_router: function () {
     return router;
-  },
-
-  get_user: function (req) {
-    const user = {
-      name: req.body.name,
-      address: req.body.address,
-      email: req.body.email,
-      birthday: req.body.birthday
-    };
-    return user;
-  },
-
-  user_to_values: function (user) {
-    return [user.name, user.address, user.email, user.birthday]
   }
 }
